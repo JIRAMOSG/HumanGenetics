@@ -1,0 +1,17 @@
+#Version1 9 de octubre 2023
+#Ramos Galguera Johana Itzel
+#
+library(dplyr)
+Data <- read.csv("DataName.csv", header = TRUE, sep = ",")
+df <- Data %>%
+  filter(TR>=10, EVE_ALT_FREQ<=0.01, ANNOTATION!="synonymous SNV", PHYLOP_PRED!="neutral", RATIO>=0.15)
+#Terminamos con 541 observaciones
+
+#Evaluamos casos posibles para filtrar mas variantes
+
+# CASO 1 homocigoto recesivo
+c1 <- df %>%
+  filter(Father.ZYG=="Father:het", Mother.ZYG=="Mother:het", AfSib.ZYG=="AfSib:hom")
+#13 observaciones
+#Analizamos los candidatos con base en lo reportado en la literatura en https://www.omim.org/ y https://www.ensembl.org/index.html. 
+#Algunas de las variantes no estaban reportadas en Gnomad.
