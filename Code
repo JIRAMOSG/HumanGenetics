@@ -4,7 +4,7 @@
 library(dplyr)
 Data <- read.csv("DataName.csv", header = TRUE, sep = ",")
 df <- Data %>%
-  filter(TR>=10, EVE_ALT_FREQ<=0.01, ANNOTATION!="synonymous SNV", PHYLOP_PRED!="neutral", RATIO>=0.15)
+  filter(TR>=10, EVE_ALT_FREQ<=0.01, ANNOTATION!="synonymous SNV", PHYLOP_PRED!="neutral", RATIO>=0.20)
 #Terminamos con 541 observaciones
 
 #Evaluamos casos posibles para filtrar mas variantes
